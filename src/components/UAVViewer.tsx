@@ -6,7 +6,7 @@ import { statusText, statusVar } from "@/lib/status";
 interface Props {
   uavId: string;
   status: EngineStatus;
-  phase?: string;
+  phase?: string | undefined;
 }
 
 /**
