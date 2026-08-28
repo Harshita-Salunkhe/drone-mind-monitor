@@ -62,7 +62,7 @@ export function MissionReplay({ uav, time, playing, phase, onSeek, onTogglePlay,
           }}
         />
         <div className="relative mt-3 h-9">
-          {uav.mission.phases.map((p) => {
+          {uav.mission.phases.map((p, i) => {
             const left = (p.start / duration) * 100;
             const active = p.name === phase.name;
             return (
@@ -70,7 +70,7 @@ export function MissionReplay({ uav, time, playing, phase, onSeek, onTogglePlay,
                 key={p.name}
                 onClick={() => onSeek(p.start)}
                 className="absolute -translate-x-1/2 text-center"
-                style={{ left: `${Math.min(96, Math.max(4, left))}%` }}
+                style={{ left: `${Math.min(96, Math.max(4, left))}%`, top: i % 2 ? 16 : 0 }}
               >
                 <span
                   className={`mx-auto block h-2 w-px ${active ? "bg-primary" : "bg-border"}`}
