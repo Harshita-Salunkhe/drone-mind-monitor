@@ -61,28 +61,21 @@ export function MissionReplay({ uav, time, playing, phase, onSeek, onTogglePlay,
             background: `linear-gradient(to right, var(--primary) ${(time / duration) * 100}%, var(--muted) ${(time / duration) * 100}%)`,
           }}
         />
-        <div className="relative mt-3 h-14">
-          {uav.mission.phases.map((p, i) => {
-            const left = (p.start / duration) * 100;
+        <div className="mt-3 grid grid-cols-7 gap-1">
+          {uav.mission.phases.map((p) => {
             const active = p.name === phase.name;
             return (
               <button
                 key={p.name}
                 onClick={() => onSeek(p.start)}
-                className="absolute w-24 -translate-x-1/2 text-center"
-                style={{ left: `${Math.min(96, Math.max(3, left))}%`, top: i % 2 ? 16 : 0 }}
+                className={`rounded-sm border px-1 py-1.5 font-mono text-[0.55rem] uppercase leading-tight tracking-wider transition-colors ${
+                  active
+                    ? "border-primary/60 bg-primary/15 text-primary"
+                    : "border-border bg-card/40 text-muted-foreground hover:border-primary/40"
+                }`}
               >
-                <span
-                  className={`mx-auto block h-2 w-px ${active ? "bg-primary" : "bg-border"}`}
-                  aria-hidden
-                />
-                <span
-                  className={`mt-1 block font-mono text-[0.55rem] uppercase tracking-wider ${
-                    active ? "text-primary" : "text-muted-foreground"
-                  }`}
-                >
-                  {p.name}
-                </span>
+                <span className="block">{p.name}</span>
+                <span className="block opacity-60">{formatClock(p.start).slice(0, 5)}</span>
               </button>
             );
           })}
