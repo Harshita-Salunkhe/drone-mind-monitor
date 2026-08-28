@@ -69,8 +69,8 @@ export function MissionReplay({ uav, time, playing, phase, onSeek, onTogglePlay,
               <button
                 key={p.name}
                 onClick={() => onSeek(p.start)}
-                className="absolute -translate-x-1/2 text-center"
-                style={{ left: `${Math.min(96, Math.max(4, left))}%`, top: i % 2 ? 16 : 0 }}
+                className="absolute w-24 -translate-x-1/2 text-center"
+                style={{ left: `${Math.min(96, Math.max(3, left))}%`, top: i % 2 ? 16 : 0 }}
               >
                 <span
                   className={`mx-auto block h-2 w-px ${active ? "bg-primary" : "bg-border"}`}
