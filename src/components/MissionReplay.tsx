@@ -61,7 +61,7 @@ export function MissionReplay({ uav, time, playing, phase, onSeek, onTogglePlay,
             background: `linear-gradient(to right, var(--primary) ${(time / duration) * 100}%, var(--muted) ${(time / duration) * 100}%)`,
           }}
         />
-        <div className="relative mt-3 h-9">
+        <div className="relative mt-3 h-14">
           {uav.mission.phases.map((p, i) => {
             const left = (p.start / duration) * 100;
             const active = p.name === phase.name;
